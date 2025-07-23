@@ -3,14 +3,13 @@ import { useLoginMutation } from "../redux/features/auth/authApi";
 import { setUser } from "../redux/features/auth/authSlice";
 import { Button } from "../components/ui/button";
 import { useAppDispatch } from "../redux/hooks";
+import { verifyToken } from "../utils/verifyToken";
+import H1Auth from "../components/ui/typography/H1Auth";
+import PAuth from "../components/ui/typography/PAuth";
+import InputWithLabel from "../components/input/InputWithLabel";
 const Login = () => {
   const dispatch = useAppDispatch();
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      userId: "0001",
-      password: "admin12345",
-    },
-  });
+  const { register, handleSubmit } = useForm();
   const [login, { error }] = useLoginMutation();
   console.log("error:", error);
 
@@ -20,29 +19,28 @@ const Login = () => {
       password: data.password,
     };
     const res = await login(userInfo).unwrap();
-    dispatch(setUser({ user: {}, token: res.data.accessToken }));
+    const user = verifyToken(res.data.accessToken);
+    dispatch(setUser({ user: { user }, token: res.data.accessToken }));
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col justify-center items-center min-h-screen gap-4"
-    >
-      <h1 className="text-xl font-semibold mb-4">Login Here </h1>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+      <H1Auth>Welcome aboard 👋</H1Auth>
+      <PAuth>Sign in With</PAuth>
       <div>
-        <input
+        <InputWithLabel
           type="text"
-          placeholder="ID"
-          className="border border-gray-300 rounded w-64 h-10 p-4 m-1"
+          placeholder="e.g. Leonard"
           id="id"
+          label="Email"
           {...register("userId")}
         />
       </div>
       <div>
-        <input
+        <InputWithLabel
           type="text"
           id="password"
-          className="border border-gray-300 rounded w-64 h-10 p-4 m-1"
-          placeholder="Password"
+          placeholder="***********"
+          label="Password"
           {...register("password")}
         />
       </div>

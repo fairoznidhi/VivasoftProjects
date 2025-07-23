@@ -15,6 +15,8 @@ export default {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+			navyBlue:'#081539',
+			customBackgroundColor:'#F8FAFC',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -55,7 +57,12 @@ export default {
   			}
   		},
 		backgroundImage:{
-			'primary-gradient':'linear-gradient(30deg, #DC02C3,#5C53FE)'
+			'primary-gradient':'linear-gradient(30deg, #DC02C3,#5C53FE)',
+			'custom-blue-gradient':'linear-gradient(180deg, #DCF1FF 0%, #92EAFD 50%, #1071FE 100%)',
+			'custom-purple-gradient':'linear-gradient(180deg, #DCF1FF 0%, #A79EFA 50%, #9FE1FD 100%)',
+		},
+		fontFamily:{
+			'tiktok':["TikTok Sans",'sans-serif']
 		}
   	}
   },

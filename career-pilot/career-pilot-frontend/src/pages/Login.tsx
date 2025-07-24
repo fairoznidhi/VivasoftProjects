@@ -1,42 +1,45 @@
 import { useForm } from "react-hook-form";
-import { useLoginMutation } from "../redux/features/auth/authApi";
-import { setUser } from "../redux/features/auth/authSlice";
-import { Button } from "../components/ui/button";
-import { useAppDispatch } from "../redux/hooks";
-import { verifyToken } from "../utils/verifyToken";
+import Button from "../components/button/Button";
+import InputLabel from "../components/input/InputLabel";
 import H1Auth from "../components/ui/typography/H1Auth";
 import PAuth from "../components/ui/typography/PAuth";
-import InputWithLabel from "../components/input/InputWithLabel";
+import { useLoginMutation } from "../redux/features/auth/authApi";
+import { setUser } from "../redux/features/auth/authSlice";
+import { useAppDispatch } from "../redux/hooks";
+import type { TLoginForm } from "../types/login";
 const Login = () => {
   const dispatch = useAppDispatch();
-  const { register, handleSubmit } = useForm();
-  const [login, { error }] = useLoginMutation();
+  const { register, handleSubmit } = useForm<TLoginForm>();
+  const [login, { error, isLoading }] = useLoginMutation();
   console.log("error:", error);
+  console.log("isLoading ", isLoading);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: TLoginForm) => {
     const userInfo = {
-      id: data.userId,
+      email: data.email,
       password: data.password,
     };
     const res = await login(userInfo).unwrap();
-    const user = verifyToken(res.data.accessToken);
-    dispatch(setUser({ user: { user }, token: res.data.accessToken }));
+    dispatch(setUser(res));
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col bg-customBackgroundColor w-[400px]"
+    >
       <H1Auth>Welcome aboard 👋</H1Auth>
       <PAuth>Sign in With</PAuth>
       <div>
-        <InputWithLabel
+        <InputLabel
           type="text"
           placeholder="e.g. Leonard"
-          id="id"
+          id="email"
           label="Email"
-          {...register("userId")}
+          {...register("email")}
         />
       </div>
       <div>
-        <InputWithLabel
+        <InputLabel
           type="text"
           id="password"
           placeholder="***********"

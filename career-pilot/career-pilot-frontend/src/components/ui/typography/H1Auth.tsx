@@ -5,7 +5,7 @@ interface H1AuthProps {
 }
 const H1Auth = ({ children }: H1AuthProps) => {
   return (
-    <h1 className="font-tiktok font-bold text-2xl text-navyBlue mb-2 select-none">
+    <h1 className="font-tiktok font-bold text-2xl text-navyBlue mb-2">
       {children}
     </h1>
   );

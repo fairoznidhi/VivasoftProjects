@@ -6,7 +6,7 @@ interface PAuthProps {
 
 const PAuth = ({ children }: PAuthProps) => {
   return (
-    <p className="font-tiktok font-normal text-base text-neutral-700 leading-[160%] mb-8 select-none">
+    <p className="font-tiktok font-normal text-base text-neutral-700 leading-[160%] mb-8">
       {children}
     </p>
   );

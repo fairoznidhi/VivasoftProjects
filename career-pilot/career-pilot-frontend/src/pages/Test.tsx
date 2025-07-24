@@ -1,4 +1,3 @@
-import React from 'react';
 
 // Main App component for the two-column layout
 function Test() {

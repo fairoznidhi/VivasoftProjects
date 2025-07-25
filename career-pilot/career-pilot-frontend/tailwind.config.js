@@ -15,7 +15,7 @@ export default {
         navyBlue: "#081539",
         darkBlue: "#102970",
         grayBorder: "#D8D5D5",
-        lightGrayBorder:"#E3E4E6",
+        lightGrayBorder: "#E3E4E6",
         customBackgroundColor: "#F8FAFC",
         whiteGlow: "rgba(255, 255, 255, 0.4)",
         card: {
@@ -59,17 +59,16 @@ export default {
       },
       backgroundImage: {
         "primary-gradient": "linear-gradient(30deg, #DC02C3,#5C53FE)",
-        "custom-blue-gradient":
-          "linear-gradient(180deg, #DCF1FF 0%, #92EAFD 50%, #1071FE 100%)",
-        "custom-purple-gradient":
-          "linear-gradient(180deg, #DCF1FF 0%, #A79EFA 50%, #9FE1FD 100%)",
+        "custom-line-gradient":
+          "linear-gradient(235deg, #92EAFD 0%, #1071FE 46.88%, #A79EFA 100%)",
         dots: "radial-gradient(circle, #E5EFFF 1px, transparent 3px)",
       },
       backgroundSize: {
         dots: "35px 35px",
       },
       boxShadow: {
-        'inset-white-glow': 'inset 0 2px 5px rgba(255,255,255,0.2), inset 0 -2px 5px rgba(255,255,255,0.4)',
+        "inset-white-glow":
+          "inset 0 2px 5px rgba(255,255,255,0.2), inset 0 -2px 5px rgba(255,255,255,0.4)",
       },
       fontFamily: {
         tiktok: ["TikTok Sans", "sans-serif"],

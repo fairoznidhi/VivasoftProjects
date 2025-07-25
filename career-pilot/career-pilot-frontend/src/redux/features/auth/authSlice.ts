@@ -1,25 +1,31 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 type TUser = {
-  access_token: string;
-  refresh_token: string;
-  user: object;
+  id: number;
+  email: string;
+  user_name: string;
+  company_id: number;
+  role: string;
+  permissions: string[];
 };
-
-type TAuthPayload = {
-  message: string;
-  data: TUser;
-};
-
 type TAuthState = {
-  message: null | string;
+  //state
   accessToken: null | string;
   refreshToken: null | string;
-  user: null | object;
+  user: null | TUser;
+};
+type TAuthData = {
+  //backend data
+  access_token: null | string;
+  refresh_token: null | string;
+  user: null | TUser;
+};
+type TAuthPayload = {
+  message: string;
+  data: TAuthData;
 };
 
 const initialState: TAuthState = {
-  message: null,
   accessToken: null,
   refreshToken: null,
   user: null,
@@ -30,16 +36,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<TAuthPayload>) => {
-      const { message, data } = action.payload;
-      console.log(data)
-      console.log("message from ere",message)
-      state.message = message;
+      const { data } = action.payload;
       state.accessToken = data.access_token;
       state.refreshToken = data.refresh_token;
       state.user = data.user;
     },
     logout: (state) => {
-      state.message = null;
       state.accessToken = null;
       state.refreshToken = null;
       state.user = null;

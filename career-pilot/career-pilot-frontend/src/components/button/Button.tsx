@@ -9,7 +9,7 @@ const Button = ({ children, ...props }: IButton) => {
     <button
       {...props}
       className="
-        flex items-center justify-center gap-1 
+        flex items-center justify-center gap-1 w-full
         px-4 py-2 
         border border-grayBorder 
         bg-gradient-to-b from-navyBlue to-darkBlue 

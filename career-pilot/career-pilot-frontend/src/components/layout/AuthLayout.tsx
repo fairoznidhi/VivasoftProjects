@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 const AuthLayout = () => {
   return (
     <main className="relative">
-      <main className="max-w-[1440px] mx-auto flex min-h-screen h-[768px] max-h-[1024px]">
+      <main className="max-w-[1440px] mx-auto flex min-h-screen lg:h-[768px] lg:max-h-[1024px]">
         {/* Left Image Section  */}
         <section className="w-[50%] h-full p-[4.68vh] hidden lg:block">
           <img

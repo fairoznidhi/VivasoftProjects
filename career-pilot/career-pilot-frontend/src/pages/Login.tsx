@@ -1,18 +1,16 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import Button from "../components/button/Button";
 import InputLabel from "../components/input/InputLabel";
-import H1Auth from "../components/ui/typography/H1Auth";
-import PAuth from "../components/ui/typography/PAuth";
+import AppleLogin from "../features/login/socialLogin/AppleLogin";
+import GoogleLogin from "../features/login/socialLogin/GoogleLogin";
+import LinkedinLogin from "../features/login/socialLogin/LinkedinLogin";
+import MicrosoftLogin from "../features/login/socialLogin/MicrosoftLogin";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { setUser } from "../redux/features/auth/authSlice";
 import { useAppDispatch } from "../redux/hooks";
 import type { TLoginForm } from "../types/login";
-import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-import GoogleLogin from "../features/login/socialLogin/GoogleLogin";
-import LinkedinLogin from "../features/login/socialLogin/LinkedinLogin";
-import AppleLogin from "../features/login/socialLogin/AppleLogin";
-import MicrosoftLogin from "../features/login/socialLogin/MicrosoftLogin";
 const Login = () => {
   // React hook form
   const { register, handleSubmit } = useForm<TLoginForm>();
@@ -40,14 +38,18 @@ const Login = () => {
       toast.success("Logged in", { id: toastId, duration: 2000 });
     } catch (err) {
       toast.error("Something went wrong", { id: toastId, duration: 2000 });
-      console.log(err)
+      console.log(err);
     }
   };
 
   return (
     <section className="flex flex-col bg-customBackgroundColor w-[400px]">
-      <H1Auth>Welcome aboard 👋</H1Auth>
-      <PAuth>Sign in With</PAuth>
+      <h1 className="font-tiktok font-bold text-2xl text-navyBlue mb-2">
+        Welcome aboard 👋
+      </h1>
+      <p className="font-tiktok font-normal text-base text-neutral-700 leading-[160%] mb-8">
+        Sign in With
+      </p>
       <div className="mb-8 flex space-x-6">
         <LinkedinLogin />
         <GoogleLogin />
@@ -62,26 +64,33 @@ const Login = () => {
         <span className="block w-[180.5px] h-[1px] bg-custom-line-gradient"></span>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <InputLabel
-            type="text"
-            placeholder="e.g. Leonard"
-            id="email"
-            label="Email"
-            {...register("email")}
-          />
-        </div>
-        <div>
-          <InputLabel
-            type="text"
-            id="password"
-            placeholder="***********"
-            label="Password"
-            {...register("password")}
-          />
-        </div>
+        <InputLabel
+          type="text"
+          placeholder="e.g. Leonard"
+          id="email"
+          label="Email"
+          {...register("email")}
+        />
+        <InputLabel
+          id="password"
+          placeholder="***********"
+          label="Password"
+          {...register("password")}
+          password={true}
+        />
         <Button>Login</Button>
       </form>
+      <div className="flex justify-center items-center gap-x-1">
+        <p className="font-tiktok font-normal text-base text-neutral-700 leading-[160%]">
+          Don't have an account?
+        </p>
+        <h2
+          className="font-tiktok font-semibold text-base text-navyBlue leading-[160%] cursor-pointer"
+          onClick={() => navigate("/register")}
+        >
+          Sign up
+        </h2>
+      </div>
     </section>
   );
 };

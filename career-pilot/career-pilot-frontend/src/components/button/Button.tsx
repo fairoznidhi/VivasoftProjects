@@ -17,7 +17,7 @@ const Button = ({ children, ...props }: IButton) => {
         shadow-inset-white-glow 
         text-white font-tiktok text-sm font-semibold leading-[1.6]
         hover:from-[#060f2e] hover:to-[#0b1f50]
-        transition-all duration-300 ease-in-out
+        transition-all duration-300 ease-in-out mb-6
       "
     >
       {children}

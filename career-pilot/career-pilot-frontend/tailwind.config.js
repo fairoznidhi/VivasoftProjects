@@ -16,6 +16,8 @@ export default {
         darkBlue: "#102970",
         grayBorder: "#D8D5D5",
         lightGrayBorder: "#E3E4E6",
+        btnGrayBackground: "#F7F7F8",
+        navbarWhiteBackground: "#FDFDFD",
         customBackgroundColor: "#F8FAFC",
         whiteGlow: "rgba(255, 255, 255, 0.4)",
         card: {
@@ -69,6 +71,11 @@ export default {
       boxShadow: {
         "inset-white-glow":
           "inset 0 2px 5px rgba(255,255,255,0.2), inset 0 -2px 5px rgba(255,255,255,0.4)",
+        nav: `0 5px 10px -8px rgba(26, 26, 26, 0.28),
+              1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+             -1px 0 0 0 rgba(0, 0, 0, 0.17) inset,
+              0 -1px 0 0 rgba(0, 0, 0, 0.17) inset,
+              0 1px 0 0 rgba(204, 204, 204, 0.5) inset`,
       },
       fontFamily: {
         tiktok: ["TikTok Sans", "sans-serif"],

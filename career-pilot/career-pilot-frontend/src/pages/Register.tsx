@@ -36,7 +36,7 @@ const Register = () => {
     const toastId = toast.loading("Signing up");
     try {
       const userInfo = {
-        user_name: data.username,
+        user_name: data?.username,
         email: data.email,
         password: data.password,
       };

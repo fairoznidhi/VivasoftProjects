@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom";
-
+import Navbar from "../../features/navbar/Navbar";
 const AuthLayout = () => {
   return (
     <div className="relative">
       <main className="max-w-[1440px] mx-auto flex min-h-screen lg:h-[768px] lg:max-h-[1024px]">
+        <section className="lg:mx-[100px] w-full">
+          <Navbar />
+        </section>
       </main>
       {/* Bottom Hue */}
       <img
@@ -14,7 +16,7 @@ const AuthLayout = () => {
       />
       {/* Background Dots  */}
       <div
-        className="w-full h-[90vh] fixed bottom-0 left-0 z-[-10] bg-dots"
+        className="w-full h-[82vh] fixed bottom-0 left-0 z-[-10] bg-dots"
         aria-hidden="true"
       ></div>
     </div>

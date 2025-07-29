@@ -1,16 +1,21 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+
+import type { TLoginForm } from "../types/login";
+
 import Button from "../components/button/Button";
 import InputLabel from "../components/input/InputLabel";
+
 import AppleLogin from "../features/login/socialLogin/AppleLogin";
 import GoogleLogin from "../features/login/socialLogin/GoogleLogin";
 import LinkedinLogin from "../features/login/socialLogin/LinkedinLogin";
 import MicrosoftLogin from "../features/login/socialLogin/MicrosoftLogin";
+
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { setUser } from "../redux/features/auth/authSlice";
 import { useAppDispatch } from "../redux/hooks";
-import type { TLoginForm } from "../types/login";
+
 const Login = () => {
   // React hook form
   const { register, handleSubmit } = useForm<TLoginForm>();

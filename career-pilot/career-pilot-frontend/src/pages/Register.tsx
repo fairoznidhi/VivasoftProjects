@@ -9,6 +9,11 @@ import MicrosoftLogin from "../features/login/socialLogin/MicrosoftLogin";
 import { useRegisterMutation } from "../redux/features/auth/authApi";
 import type { TRegisterForm } from "../types/register";
 import { toast } from "sonner";
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+
+type CustomError = FetchBaseQueryError & {
+  data?: { message?: string };
+};
 
 const Register = () => {
   //React hook form
@@ -35,14 +40,16 @@ const Register = () => {
         email: data.email,
         password: data.password,
       };
-      await registerUser(userInfo).unwrap();
+      const res = await registerUser(userInfo).unwrap();
+      console.log("res",res)
       navigate("/login");
       toast.success("Registration successful", {
         id: toastId,
         duration: 2000,
       });
     } catch (err) {
-      const errorMessage = await error?.data?.message;
+      const customError = error as CustomError;
+      const errorMessage = customError?.data?.message;
       toast.error(errorMessage, {
         id: toastId,
         duration: 2000,

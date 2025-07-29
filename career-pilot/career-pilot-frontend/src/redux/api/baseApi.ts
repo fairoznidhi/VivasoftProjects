@@ -4,6 +4,7 @@ import {
   type BaseQueryFn,
 } from "@reduxjs/toolkit/query/react";
 import type { RootState } from "../store";
+import { logout, setUser } from "../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost/api/identity",
@@ -22,13 +23,31 @@ const baseQueryWithRefreshToken: BaseQueryFn = async (
   api,
   extraOptions
 ) => {
-  const result = await baseQuery(args, api, extraOptions);
+  let result = await baseQuery(args, api, extraOptions);
 
   if (result.error?.status === 401) {
     console.log("sending refresh token");
-  }
+    const state = api.getState() as RootState;
+    const refreshToken = state.auth.refreshToken;
+    const res = await fetch("http://localhost/api/identity/token/refresh", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ refresh_token: refreshToken }),
+    });
+    const data = await res.json();
+    console.log("data", data);
+    console.log("datar porer line");
+    if (data?.data?.access_token) {
 
-  return result; // ✅ MUST return QueryReturnValue
+      console.log(data.data.access_token);
+      api.dispatch(setUser(data));
+      result = await baseQuery(args, api, extraOptions);
+    } else {
+      api.dispatch(logout());
+      window.location.href = "/login";
+    }
+  }
+  return result;
 };
 
 const baseApi = createApi({

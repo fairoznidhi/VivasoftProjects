@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/button/Button";
-import InputLabel from "../components/input/InputLabel";
-import AppleLogin from "../features/login/socialLogin/AppleLogin";
-import GoogleLogin from "../features/login/socialLogin/GoogleLogin";
-import LinkedinLogin from "../features/login/socialLogin/LinkedinLogin";
-import MicrosoftLogin from "../features/login/socialLogin/MicrosoftLogin";
-import { useRegisterMutation } from "../redux/features/auth/authApi";
-import type { TRegisterForm } from "../types/register";
+import Button from "@/components/button/Button";
+import InputLabel from "@/components/input/InputLabel";
+import AppleLogin from "@/features/login/socialLogin/AppleLogin";
+import GoogleLogin from "@/features/login/socialLogin/GoogleLogin";
+import LinkedinLogin from "@/features/login/socialLogin/LinkedinLogin";
+import MicrosoftLogin from "@/features/login/socialLogin/MicrosoftLogin";
+import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import type { TRegisterForm } from "@/types/register";
 import { toast } from "sonner";
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
@@ -16,22 +16,18 @@ type CustomError = FetchBaseQueryError & {
 };
 
 const Register = () => {
-  //React hook form
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<TRegisterForm>();
-  //Route Navigation
   const navigate = useNavigate();
 
-  //Register post api
   const [registerUser, { error, isLoading }] = useRegisterMutation();
   console.log("error Register", error);
   console.log("isLoading Register", isLoading);
 
-  // Register info submission
   const onSubmit = async (data: TRegisterForm) => {
     const toastId = toast.loading("Signing up");
     try {
@@ -41,7 +37,7 @@ const Register = () => {
         password: data.password,
       };
       const res = await registerUser(userInfo).unwrap();
-      console.log("res",res)
+      console.log("res", res);
       navigate("/login");
       toast.success("Registration successful", {
         id: toastId,
@@ -54,7 +50,6 @@ const Register = () => {
         id: toastId,
         duration: 2000,
       });
-      // toast.error("Something went wrong", { id: toastId, duration: 2000 });
       console.log(err);
     }
   };

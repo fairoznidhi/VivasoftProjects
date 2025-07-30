@@ -7,10 +7,10 @@ import {
 } from "../../components/ui/navigation-menu";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "AI Interview", path: "/ai-interview" },
-  { name: "Jobs", path: "/jobs" },
-  { name: "Courses", path: "/courses" },
+  { name: "Home", path: "/",otherPaths:["/upload-resume"] },
+  { name: "AI Interview", path: "/ai-interview",otherPaths:[] },
+  { name: "Jobs", path: "/jobs",otherPaths:[] },
+  { name: "Courses", path: "/courses",otherPaths:[] },
 ];
 
 const NavbarItems = () => {
@@ -20,7 +20,7 @@ const NavbarItems = () => {
     <NavigationMenu>
       <NavigationMenuList className="flex gap-8">
         {navItems.map((item) => {
-          const isActive = currentPath === item.path;
+          const isActive = currentPath === item.path||item.otherPaths.includes(currentPath);
           return (
             <NavigationMenuItem key={item.path}>
               <NavigationMenuLink

@@ -2,34 +2,28 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-import type { TLoginForm } from "../types/login";
+import type { TLoginForm } from "@/types/login";
 
-import Button from "../components/button/Button";
-import InputLabel from "../components/input/InputLabel";
+import InputLabel from "@/components/input/InputLabel";
+import Button from "@/components/button/Button";
 
-import AppleLogin from "../features/login/socialLogin/AppleLogin";
-import GoogleLogin from "../features/login/socialLogin/GoogleLogin";
-import LinkedinLogin from "../features/login/socialLogin/LinkedinLogin";
-import MicrosoftLogin from "../features/login/socialLogin/MicrosoftLogin";
+import AppleLogin from "@/features/login/socialLogin/AppleLogin";
+import GoogleLogin from "@/features/login/socialLogin/GoogleLogin";
+import LinkedinLogin from "@/features/login/socialLogin/LinkedinLogin";
+import MicrosoftLogin from "@/features/login/socialLogin/MicrosoftLogin";
 
-import { useLoginMutation } from "../redux/features/auth/authApi";
-import { setUser } from "../redux/features/auth/authSlice";
-import { useAppDispatch } from "../redux/hooks";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { setUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
 const Login = () => {
-  // React hook form
   const { register, handleSubmit } = useForm<TLoginForm>();
-  //Route navigation
   const navigate = useNavigate();
-  //Dispatching
   const dispatch = useAppDispatch();
-
-  // Login post api
   const [login, { error, isLoading }] = useLoginMutation();
   console.log("error:", error);
   console.log("isLoading ", isLoading);
 
-  // Login Info submission
   const onSubmit = async (data: TLoginForm) => {
     const toastId = toast.loading("Loggin in");
     try {
@@ -38,8 +32,8 @@ const Login = () => {
         password: data.password,
       };
       const res = await login(userInfo).unwrap();
-      dispatch(setUser(res)); //dispatch setUser(auth)
-      navigate("/"); //after login navigate to '/
+      dispatch(setUser(res));
+      navigate("/");
       toast.success("Logged in", { id: toastId, duration: 2000 });
     } catch (err) {
       toast.error("Something went wrong", { id: toastId, duration: 2000 });

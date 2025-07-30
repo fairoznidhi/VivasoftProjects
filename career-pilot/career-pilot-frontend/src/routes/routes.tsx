@@ -6,15 +6,17 @@ import CustomerLayout from "../components/layout/CustomerLayout";
 import Test from "../pages/Test";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
+import Home from "@/pages/Home";
+import UploadResume from "@/pages/UploadResume";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <CustomerLayout/>,
+    element: <CustomerLayout />,
     children: [
       {
-        index:true,
-        element: <Login />,
+        index: true,
+        element: <Home />,
       },
       {
         path: "/ai-interview",
@@ -28,11 +30,15 @@ const router = createBrowserRouter([
         path: "/courses",
         element: <Login />,
       },
+      {
+        path: "/upload-resume",
+        element: <UploadResume />,
+      },
     ],
   },
   {
     path: "/profile",
-    element: <Profile/>,
+    element: <Profile />,
   },
   {
     path: "/app",
@@ -48,14 +54,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Register/>,
+        element: <Register />,
       },
     ],
   },
   {
-    path:"/test",
-    element:<Test/>
-  }
+    path: "/test",
+    element: <Test />,
+  },
 ]);
 
 export default router;

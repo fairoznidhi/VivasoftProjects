@@ -1,13 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "../pages/Login";
-import App from "../App";
-import AuthLayout from "../components/layout/AuthLayout";
-import CustomerLayout from "../components/layout/CustomerLayout";
-import Test from "../pages/Test";
-import Register from "../pages/Register";
-import Profile from "../pages/Profile";
+import Login from "@/pages/Login";
+import App from "@/App";
+import AuthLayout from "@/components/layout/AuthLayout";
+import CustomerLayout from "@/components/layout/CustomerLayout";
+import Test from "@/pages/Test";
+import Register from "@/pages/Register";
+import Profile from "@/pages/Profile";
 import Home from "@/pages/Home";
 import UploadResume from "@/pages/UploadResume";
+import AiInterview from "@/pages/AiInterview";
+import Jobs from "@/pages/Jobs";
+import Courses from "@/pages/Courses";
 
 const router = createBrowserRouter([
   {
@@ -20,15 +23,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/ai-interview",
-        element: <Login />,
+        element: <AiInterview />,
       },
       {
         path: "/jobs",
-        element: <Login />,
+        element: <Jobs />,
       },
       {
         path: "/courses",
-        element: <Login />,
+        element: <Courses />,
       },
       {
         path: "/upload-resume",

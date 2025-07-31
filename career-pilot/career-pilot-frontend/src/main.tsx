@@ -7,17 +7,17 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store.ts";
 import { PersistGate } from "redux-persist/integration/react";
 import { Toaster } from "sonner";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <GoogleOAuthProvider clientId="793891784984-avgon0lkidm0e6ir7iqh990kcf3bk929.apps.googleusercontent.com">
-      <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router} />
-      </PersistGate>
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </GoogleOAuthProvider>
-      <Toaster/>
+      <Toaster />
     </Provider>
   </StrictMode>
 );

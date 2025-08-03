@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <section className="flex flex-col bg-customBackgroundColor w-[400px]">
+    <section className="flex flex-col lg:w-[400px]">
       <h1 className="font-tiktok font-bold text-2xl text-navyBlue mb-2">
         Welcome aboard 👋
       </h1>

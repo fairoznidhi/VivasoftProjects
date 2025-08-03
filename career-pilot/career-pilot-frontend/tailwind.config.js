@@ -20,8 +20,6 @@ export default {
         navbarWhiteBackground: "#FDFDFD",
         customBackgroundColor: "#F8FAFC",
         whiteGlow: "rgba(255, 255, 255, 0.4)",
-        gradientBorder:
-          "linear-gradient(190deg, rgba(6,204,254,0.2) 1%, rgba(0,81,255,0.2) 45.32%, rgba(0,164,156,0.2) 95.55%)",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -65,8 +63,9 @@ export default {
         "primary-gradient": "linear-gradient(30deg, #DC02C3,#5C53FE)",
         "custom-line-gradient":
           "linear-gradient(235deg, #92EAFD 0%, #1071FE 46.88%, #A79EFA 100%)",
-        dots: "radial-gradient(circle, #E5EFFF 1px, transparent 3px)",
-        
+        dots: "radial-gradient(circle, #E5EFFF 2px, transparent 1px)",
+        customGradient:
+          "linear-gradient(235deg, #92EAFD 0%, #1071FE 46.88%, #A79EFA 100%)",
       },
       backgroundSize: {
         dots: "35px 35px",

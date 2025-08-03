@@ -16,7 +16,7 @@ const AuthLayout = () => {
         className="absolute bottom-0 left-0 w-full pointer-events-none select-none z-[-5]"
       />
       <div
-        className="w-full h-[82vh] fixed bottom-0 left-0 z-[-10] bg-dots"
+        className="absolute w-full h-[calc(100%-10rem)] top-40 left-0 z-[-10] bg-dots"
         aria-hidden="true"
       ></div>
     </div>

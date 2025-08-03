@@ -5,7 +5,7 @@ const AuthLayout = () => {
     <div className="relative">
       <main className="max-w-[1440px] mx-auto flex min-h-screen lg:h-[768px] lg:max-h-[1024px]">
         {/* Left Image Section  */}
-        <aside className="w-[50%] h-full p-[4.68vh] hidden lg:block">
+        <aside className="w-[50%] h-full p-[4.68vh] hidden lg:block z-[-8]">
           <img
             src="/images/authBackground.svg"
             role="presentation"
@@ -21,16 +21,14 @@ const AuthLayout = () => {
           <Outlet />
         </section>
       </main>
-      {/* Bottom Hue */}
       <img
         src="/images/hue.svg"
         role="presentation"
         aria-hidden="true"
-        className="absolute bottom-0 left-0 w-full pointer-events-none select-none z-50"
+        className="absolute bottom-0 left-0 w-full pointer-events-none select-none z-[-5]"
       />
-      {/* Background Dots  */}
       <div
-        className="w-full h-[90vh] fixed bottom-0 left-0 z-[-10] bg-dots"
+        className="absolute w-full h-[calc(100%-8rem)] top-32 left-0 z-[-10] bg-dots"
         aria-hidden="true"
       ></div>
     </div>

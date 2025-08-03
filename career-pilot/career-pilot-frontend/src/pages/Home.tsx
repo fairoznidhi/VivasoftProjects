@@ -1,3 +1,4 @@
+import GradientButton from "@/components/button/GradientButton";
 import { useNavigate } from "react-router-dom";
 
 const data = [
@@ -24,14 +25,14 @@ const Home = () => {
     const navigate=useNavigate();
   return (
     <section className=" flex flex-col justify-center items-center pb-[233px]">
-      <h1 className="max-w-[600px] text-navyBlue text-center font-tiktok text-[40px] font-semibold leading-[1.4] mb-10">
+      <h1 className="max-w-[600px] text-navyBlue text-center font-tiktok  text-2xl lg:text-[40px] font-semibold leading-[1.4] mx-2 mb-10">
         Crush your next interview⚡<br></br> train smarter with AI on your side
       </h1>
-      <div className="grid grid-cols-3 gap-x-8 mb-10 ">
+      <div className="grid  grid-cols-1 md:grid-cols-3 lg:gap-x-8 mb-10">
         {" "}
         {data.map((item) => {
           return (
-            <div className="bg-white p-4 flex flex-col gap-y-3 rounded-[16px] shadow-card border shadow-nav  ">
+            <div className="bg-white m-2 mx-4 lg:m-0 p-4 flex flex-col gap-y-3 rounded-[16px] shadow-card border shadow-nav  ">
               <img src={`/images/home/${item.name}.svg`} className="mb-1"></img>
               <h1 className="text-navyBlue font-tiktok text-lg font-semibold leading-[160%]">
                 {item.title}
@@ -43,7 +44,7 @@ const Home = () => {
           );
         })}
       </div>
-      <div className="px-6 py-2 rounded-[50px] bg-white shadow-custom font-tiktok text-lg font-semibold leading-[1.6] hover:bg-gray-50 transition-transform duration-200 ease-in-out text-navyBlue cursor-pointer" onClick={()=>navigate('/upload-resume')}>Start practicing now</div>
+      <GradientButton text="Start practicing now" onClick={()=>navigate('/upload-resume')}/>
     </section>           
   );
 };

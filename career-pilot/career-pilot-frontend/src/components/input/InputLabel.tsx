@@ -36,19 +36,11 @@ const InputLabel = ({
             onClick={() => setShowPassword((prev) => !prev)}
             className="text-gray-500 hover:text-gray-700"
           >
-            {showPassword ? (
-              <img
-                src="/images/closeEye.svg"
+            <img
+                src={`/images/icons/${showPassword?'view':'viewoff'}-icon.svg`}
                 alt="Hide password"
                 className="w-5 h-5 cursor-pointer"
               />
-            ) : (
-              <img
-                src="/images/closeEye.svg"
-                alt="Hide password"
-                className="w-5 h-5 cursor-pointer"
-              />
-            )}
           </button>
         )}
       </div>

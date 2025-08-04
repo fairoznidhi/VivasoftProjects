@@ -19,6 +19,7 @@ export default {
         btnGrayBackground: "#F7F7F8",
         navbarWhiteBackground: "#FDFDFD",
         customBackgroundColor: "#F8FAFC",
+        cornflowerBlue: "#335cff",
         whiteGlow: "rgba(255, 255, 255, 0.4)",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -66,6 +67,7 @@ export default {
         dots: "radial-gradient(circle, #E5EFFF 2px, transparent 1px)",
         customGradient:
           "linear-gradient(235deg, #92EAFD 0%, #1071FE 46.88%, #A79EFA 100%)",
+        "navy-gradient": "linear-gradient(180deg, #081539 0%, #102970 100%)",
       },
       backgroundSize: {
         dots: "35px 35px",

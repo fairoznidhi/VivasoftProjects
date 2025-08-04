@@ -135,7 +135,7 @@ const Register = () => {
           })}
         />
 
-        <Button>Signup</Button>
+        <Button className="w-full">Signup</Button>
       </form>
       <div className="flex justify-center items-center gap-x-1">
         <p className="font-tiktok font-normal text-base text-neutral-700 leading-[160%]">

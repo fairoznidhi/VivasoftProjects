@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 import "./index.css";
 import { persistor, store } from "./redux/store.ts";
 import router from "./routes/routes.tsx";
-import {FlowProvider} from "@/context/FlowContext.tsx"
+import { FlowProvider } from "@/context/FlowContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -15,9 +15,9 @@ createRoot(document.getElementById("root")!).render(
       <PersistGate loading={null} persistor={persistor}>
         <FlowProvider>
           <RouterProvider router={router} />
+          <Toaster />
         </FlowProvider>
       </PersistGate>
-      <Toaster />
     </Provider>
   </StrictMode>
 );

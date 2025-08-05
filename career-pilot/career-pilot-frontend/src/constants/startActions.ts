@@ -10,4 +10,4 @@ export const startActions = [
     label: "Practice Interview",
     key: "practiceInterview",
   },
-];
+] as const;

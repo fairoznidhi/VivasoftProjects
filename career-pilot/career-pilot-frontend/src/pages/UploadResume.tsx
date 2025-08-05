@@ -1,46 +1,30 @@
 import ActionButton from "@/components/button/ActionButton";
 import GradientButton from "@/components/button/GradientButton";
 import { Progress } from "@/components/ui/progress";
+import { useFlow } from "@/context/FlowContext";
+import type { FormValues, UploadedFile } from "@/types/uploadResume";
+import { formatSize } from "@/utils/formatSize";
 import { useEffect, useRef, useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-
-type UploadedFile = {
-  name: string;
-  size: number;
-  type: string;
-};
-
-type FormValues = {
-  file: FileList;
-};
 
 const UploadResume = () => {
   const { register, handleSubmit, setValue, watch } = useForm<FormValues>();
+  const { updateActiveButtons } = useFlow();
+  useEffect(() => {
+    updateActiveButtons({ uploadResume: true });
+  }, []);
   const [uploading, setUploading] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null);
   const [progress, setProgress] = useState(0);
   const [shadProgress, setShadProgress] = useState(0);
-  const navigate = useNavigate();
   const watchedFile = watch("file");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  console.log(shadProgress);
-
-  const fileInputRef = useRef(null);
-  const progressIntervalRef = useRef(null);
-
-  const formatSize = (bytes: number) => {
-    if (bytes < 1024) return bytes + " bytes";
-    else if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
-    else return (bytes / (1024 * 1024)).toFixed(2) + " MB";
-  };
-
+  const progressIntervalRef = useRef<number | null>(null);
   const removeFile = () => {
     setUploadedFile(null);
     setProgress(0);
-    if (fileInputRef.current) fileInputRef.current.value = "";
+    setValue("file", null);
   };
-
   useEffect(() => {
     return () => {
       if (progressIntervalRef.current)
@@ -50,7 +34,7 @@ const UploadResume = () => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log("Submitted files:", data.file);
-    if (data.file.length > 0) {
+    if (data.file?.length) {
       console.log("First file:", data.file[0]);
     }
   };
@@ -75,7 +59,7 @@ const UploadResume = () => {
                   <div className="flex gap-x-3">
                     <img
                       src={`/images/icons/${uploadedFile?.type}-icon.svg`}
-                      className="w-10 h-10"
+                      className={`w-10 h-10`}
                     />
                     <div>
                       <h1 className="text-navyBlue font-tiktok text-base font-semibold leading-[1.6]">
@@ -84,13 +68,14 @@ const UploadResume = () => {
                       <div className="flex items-center gap-x-1">
                         <p className="font-tiktok text-sm font-normal leading-[1.6] text-neutral-700">
                           {formatSize(progress)} of{" "}
-                          {formatSize(uploadedFile?.size)}
+                          {formatSize(uploadedFile?.size ?? 0)}
                         </p>
                         <span className="inline-block bg-navyBlue w-[6px] h-[6px] rounded-full"></span>
                         <img
                           src={`/images/icons/${
                             uploading ? "spinner" : "completed"
                           }-icon.svg`}
+                          className={`${uploading ? "animate-spin" : ""}`}
                         />
                         <p className="font-tiktok text-sm font-normal leading-[1.6] text-neutral-700">
                           {uploading ? "Uploading..." : "Completed"}
@@ -154,15 +139,13 @@ const UploadResume = () => {
           <input
             type="file"
             id="fileInput"
-            ref={fileInputRef}
             className="hidden"
             accept=".pdf,.doc,.png,.jpg,.jpeg"
             {...register("file", {
               onChange: (e) => {
                 if (e.target.files && e.target.files.length > 0) {
                   const file = e.target.files[0];
-                  const url = URL.createObjectURL(file);
-                  setPreviewUrl(url);
+                  setPreviewUrl(URL.createObjectURL(file));
                   setUploading(true);
                   setUploadedFile({
                     name: file.name,
@@ -171,20 +154,23 @@ const UploadResume = () => {
                   });
                   setProgress(0);
                   setShadProgress(0);
-
                   let currentStep = 0;
-                  const totalSteps = 40;
+                  const totalSteps = 50;
                   if (progressIntervalRef.current)
                     clearInterval(progressIntervalRef.current);
                   progressIntervalRef.current = setInterval(() => {
                     currentStep++;
-                    setProgress((currentStep / totalSteps) * file.size);
+                    if (currentStep % 10 == 0)
+                      setProgress((currentStep / totalSteps) * file.size);
                     setShadProgress((currentStep / totalSteps) * 100);
-                    if (currentStep >= totalSteps) {
+                    if (
+                      currentStep >= totalSteps &&
+                      progressIntervalRef.current
+                    ) {
                       clearInterval(progressIntervalRef.current);
                       setUploading(false);
                     }
-                  }, 50);
+                  }, 50) as unknown as number;
                 }
               },
             })}

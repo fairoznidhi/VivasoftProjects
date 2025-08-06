@@ -1,25 +1,37 @@
-import { createBrowserRouter } from "react-router-dom";
-import Login from "@/pages/Login";
 import App from "@/App";
 import AuthLayout from "@/components/layout/AuthLayout";
-import CustomerLayout from "@/components/layout/CustomerLayout";
-import Test from "@/pages/Test";
-import Register from "@/pages/Register";
-import Profile from "@/pages/Profile";
-import Home from "@/pages/Home";
-import UploadResume from "@/pages/UploadResume";
+import HomeLayout from "@/components/layout/HomeLayout";
+import NavbarLayout from "@/components/layout/NavbarLayout";
+import { startActions } from "@/constants/paths";
 import AiInterview from "@/pages/AiInterview";
-import Jobs from "@/pages/Jobs";
 import Courses from "@/pages/Courses";
+import ExploreCuratedJobs from "@/pages/ExploreCuratedJobs";
+import Home from "@/pages/Home";
+import Jobs from "@/pages/Jobs";
+import Login from "@/pages/Login";
+import Profile from "@/pages/Profile";
+import Register from "@/pages/Register";
+import Test from "@/pages/Test";
+import UploadResume from "@/pages/UploadResume";
+import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <CustomerLayout />,
+    element: <NavbarLayout />,
     children: [
       {
         index: true,
         element: <Home />,
+      },
+      {
+        element: <HomeLayout />,
+        children: [
+          ...startActions.map((action) => ({
+            path: action.path,
+            element: <action.component />,
+          })),
+        ],
       },
       {
         path: "/ai-interview",
@@ -36,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/upload-resume",
         element: <UploadResume />,
+      },
+      {
+        path: "/explore-curated-jobs",
+        element: <ExploreCuratedJobs />,
       },
     ],
   },

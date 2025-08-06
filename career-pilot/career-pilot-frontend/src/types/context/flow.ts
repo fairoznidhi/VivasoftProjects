@@ -1,4 +1,4 @@
-import { startActions } from "@/constants/startActions";
+import { startActions } from "@/constants/paths";
 
 export type StartActionKeys = (typeof startActions)[number]["key"];
 

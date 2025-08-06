@@ -4,7 +4,6 @@ const AuthLayout = () => {
   return (
     <div className="relative">
       <main className="max-w-[1440px] mx-auto flex min-h-screen lg:h-[768px] lg:max-h-[1024px]">
-        {/* Left Image Section  */}
         <aside className="w-[50%] h-full p-[4.68vh] hidden lg:block z-[-8]">
           <img
             src="/images/authBackground.svg"
@@ -13,7 +12,6 @@ const AuthLayout = () => {
             className="pointer-events-none select-none w-auto h-full ml-auto object-cover"
           />
         </aside>
-        {/* Right Section  */}
         <section
           className="w-[80%] md:w-[50%] flex justify-center items-center mx-auto"
           aria-label="Authentication Section"

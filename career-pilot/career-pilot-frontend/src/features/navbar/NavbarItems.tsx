@@ -4,14 +4,10 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "../../components/ui/navigation-menu";
+} from "@/components/ui/navigation-menu";
+import { navItems } from "@/constants/paths";
 
-const navItems = [
-  { name: "Home", path: "/",otherPaths:["/upload-resume"] },
-  { name: "AI Interview", path: "/ai-interview",otherPaths:[] },
-  { name: "Jobs", path: "/jobs",otherPaths:[] },
-  { name: "Courses", path: "/courses",otherPaths:[] },
-];
+
 
 const NavbarItems = () => {
   const location = useLocation();
@@ -20,7 +16,7 @@ const NavbarItems = () => {
     <NavigationMenu>
       <NavigationMenuList className="flex gap-8">
         {navItems.map((item) => {
-          const isActive = currentPath === item.path||item.otherPaths.includes(currentPath);
+          const isActive = currentPath === item.path || item.otherPaths.some((path) => path === currentPath);
           return (
             <NavigationMenuItem key={item.path}>
               <NavigationMenuLink

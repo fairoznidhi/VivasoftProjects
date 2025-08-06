@@ -1,4 +1,4 @@
-import { startActions } from "@/constants/startActions";
+import { startActions } from "@/constants/paths";
 import type {
   ActiveButtons,
   FlowContextType,

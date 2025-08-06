@@ -7,7 +7,7 @@ import type { RootState } from "../store";
 import { logout, setUser } from "../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost/api/identity",
+  baseUrl: "http://localhost/api",
   // credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const accessToken = (getState() as RootState).auth.accessToken;
@@ -35,8 +35,6 @@ const baseQueryWithRefreshToken: BaseQueryFn = async (
       body: JSON.stringify({ refresh_token: refreshToken }),
     });
     const data = await res.json();
-    console.log("data", data);
-    console.log("datar porer line");
     if (data?.data?.access_token) {
 
       console.log(data.data.access_token);

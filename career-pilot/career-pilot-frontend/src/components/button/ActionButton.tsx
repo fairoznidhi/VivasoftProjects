@@ -1,4 +1,4 @@
-import { startActions } from "@/constants/startActions";
+import { startActions } from "@/constants/paths";
 import { useFlow } from "@/context/FlowContext";
 import Button from "@/components/button/Button";
 
@@ -11,11 +11,12 @@ const ActionButton = () => {
         <>
           <div key={`button-${action.key || index}`} className="flex justify-center">
             <Button 
-              className="flex flex-row items-center gap-x-1 disabled:opacity-50 whitespace-nowrap" 
+              className="flex flex-row items-center gap-x-1 disabled:opacity-50 whitespace-nowrap no-hover cursor-default" 
               disabled={!activeButtons[action.key]}
+              hover={false}
             >
-              <img src={`/images/icons/${index+1}.svg`} alt={action.label} />
-              {action.label}
+              <img src={`/images/icons/${index+1}.svg`} alt={action.key} />
+              {action.name}
             </Button>
           </div>
           {index < startActions.length - 1 && (

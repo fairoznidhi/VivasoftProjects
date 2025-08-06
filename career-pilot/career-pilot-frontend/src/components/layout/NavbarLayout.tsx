@@ -1,6 +1,6 @@
 import Navbar from "@/features/navbar/Navbar";
 import { Outlet } from "react-router-dom";
-const AuthLayout = () => {
+const NavbarLayout = () => {
   return (
     <div className="relative overscroll-none">
       <main className="max-w-[1440px] mx-auto flex min-h-screen ">
@@ -23,4 +23,4 @@ const AuthLayout = () => {
   );
 };
 
-export default AuthLayout;
+export default NavbarLayout;

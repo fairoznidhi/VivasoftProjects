@@ -65,8 +65,8 @@ export default {
         "custom-line-gradient":
           "linear-gradient(235deg, #92EAFD 0%, #1071FE 46.88%, #A79EFA 100%)",
         dots: "radial-gradient(circle, #E5EFFF 2px, transparent 1px)",
-        customGradient:
-          "linear-gradient(235deg, #92EAFD 0%, #1071FE 46.88%, #A79EFA 100%)",
+        customGradient:"linear-gradient(210deg, #92EAFD 0%, #1071FE 46.88%, #A79EFA 100%)",
+        customGradientBack:"linear-gradient(190deg, rgba(6, 204, 254, 0.20) 1%, rgba(0, 81, 255, 0.20) 45.32%, rgba(0, 164, 156, 0.20) 95.55%)", 
         "navy-gradient": "linear-gradient(180deg, #081539 0%, #102970 100%)",
       },
       backgroundSize: {

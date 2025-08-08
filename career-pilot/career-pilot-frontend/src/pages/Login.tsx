@@ -5,7 +5,6 @@ import { toast } from "sonner";
 import type { TLoginForm } from "@/types/login";
 
 import InputLabel from "@/components/input/InputLabel";
-import Button from "@/components/button/Button";
 
 import AppleLogin from "@/features/login/socialLogin/AppleLogin";
 import GoogleLogin from "@/features/login/socialLogin/GoogleLogin";
@@ -15,6 +14,7 @@ import MicrosoftLogin from "@/features/login/socialLogin/MicrosoftLogin";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { setUser } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
+import { Button } from "@/components/ui/button";
 
 const Login = () => {
   const { register, handleSubmit } = useForm<TLoginForm>();
@@ -77,7 +77,7 @@ const Login = () => {
           {...register("password")}
           password={true}
         />
-        <Button className="w-full mb-6">Login</Button>
+        <Button variant="blue" className="w-full mb-6">Login</Button>
       </form>
       <div className="flex justify-center items-center gap-x-1">
         <p className="font-tiktok font-normal text-base text-neutral-700 leading-[160%]">

@@ -1,9 +1,5 @@
-import React from 'react'
-
 const PracticeInterview = () => {
-  return (
-    <div>PracticeInterview</div>
-  )
-}
+  return <div>PracticeInterview</div>;
+};
 
-export default PracticeInterview
+export default PracticeInterview;

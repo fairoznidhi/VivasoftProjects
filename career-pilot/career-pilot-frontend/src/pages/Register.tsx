@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import Button from "@/components/button/Button";
 import InputLabel from "@/components/input/InputLabel";
 import AppleLogin from "@/features/login/socialLogin/AppleLogin";
 import GoogleLogin from "@/features/login/socialLogin/GoogleLogin";
@@ -10,6 +9,7 @@ import { useRegisterMutation } from "@/redux/features/auth/authApi";
 import type { TRegisterForm } from "@/types/register";
 import { toast } from "sonner";
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { Button } from "@/components/ui/button";
 
 type CustomError = FetchBaseQueryError & {
   data?: { message?: string };
@@ -135,7 +135,7 @@ const Register = () => {
           })}
         />
 
-        <Button className="w-full mb-6">Signup</Button>
+        <Button variant="blue" className="w-full mb-6">Signup</Button>
       </form>
       <div className="flex justify-center items-center gap-x-1">
         <p className="font-tiktok font-normal text-base text-neutral-700 leading-[160%]">

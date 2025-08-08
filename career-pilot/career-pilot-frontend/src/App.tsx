@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import Button from "./components/button/Button";
 import { logout } from "./redux/features/auth/authSlice";
 import { useAppDispatch } from "./redux/hooks";
 import { useUserProfileQuery } from "./redux/features/profile/profileApi";
+import { Button } from "./components/ui/button";
 
 function App() {
   const navigate = useNavigate();

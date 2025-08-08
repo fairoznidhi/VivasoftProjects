@@ -9,7 +9,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const UploadResume = () => {
-  const { register, handleSubmit, setValue, watch } = useForm<FormValues>();
+  const { register, handleSubmit, setValue } = useForm<FormValues>();
   const { updateActiveButtons } = useFlow();
   const navigate = useNavigate();
   useEffect(() => {
@@ -19,7 +19,6 @@ const UploadResume = () => {
   const [uploadedFile, setUploadedFile] = useState<UploadedFile | null>(null);
   const [progress, setProgress] = useState(0);
   const [shadProgress, setShadProgress] = useState(0);
-  const watchedFile = watch("file");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const progressIntervalRef = useRef<number | null>(null);
   const removeFile = () => {
@@ -112,6 +111,7 @@ const UploadResume = () => {
             ) : (
               <div>
                 <button
+                  type="button"
                   className="text-navyBlue text-sm font-semibold px-4 py-2 border-2 rounded-[50px] border-navyBlue cursor-pointer"
                   onClick={openPreviewInNewWindow}
                 >
@@ -187,13 +187,6 @@ const UploadResume = () => {
         type="submit"
         disabled={!uploadedFile || (uploadedFile && uploading)}
       />
-      <div>
-        {watchedFile && watchedFile.length > 0 ? (
-          <p>Selected file: {watchedFile[0].name}</p>
-        ) : (
-          <p>No file selected yet</p>
-        )}
-      </div>
     </form>
   );
 };

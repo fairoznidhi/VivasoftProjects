@@ -36,7 +36,6 @@ const baseQueryWithRefreshToken: BaseQueryFn = async (
     });
     const data = await res.json();
     if (data?.data?.access_token) {
-
       console.log(data.data.access_token);
       api.dispatch(setUser(data));
       result = await baseQuery(args, api, extraOptions);

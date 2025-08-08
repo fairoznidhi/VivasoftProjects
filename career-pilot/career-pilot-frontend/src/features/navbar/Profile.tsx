@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
@@ -6,11 +6,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { logoutUser } from "@/utils/logout";
+import { logout } from "@/redux/features/auth/authSlice";
 
 const Profile = () => {
   const username = useAppSelector((state) => state.auth.user?.user_name);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
 
   return (
     <div className="flex items-center gap-4">
@@ -37,7 +42,7 @@ const Profile = () => {
           <DropdownMenuItem onClick={() => navigate("/settings")}>
             Settings
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={logoutUser}>Logout</DropdownMenuItem>
+          <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

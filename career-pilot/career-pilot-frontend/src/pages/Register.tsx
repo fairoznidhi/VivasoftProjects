@@ -61,7 +61,7 @@ const Register = () => {
       <p className="font-tiktok font-normal text-base text-neutral-700 leading-[160%] mb-8">
         Sign up With
       </p>
-      <div className="mb-8 flex space-x-6">
+      {/* <div className="mb-8 flex space-x-6">
         <LinkedinLogin />
         <GoogleLogin />
         <AppleLogin />
@@ -73,7 +73,7 @@ const Register = () => {
           OR
         </span>
         <span className="block w-[180.5px] h-[1px] bg-custom-line-gradient"></span>
-      </div>
+      </div> */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputLabel
           type="text"

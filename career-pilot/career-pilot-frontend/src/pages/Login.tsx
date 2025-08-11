@@ -13,7 +13,7 @@ import MicrosoftLogin from "@/features/login/socialLogin/MicrosoftLogin";
 
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { setUser } from "@/redux/features/auth/authSlice";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Button } from "@/components/ui/button";
 
 const Login = () => {
@@ -23,10 +23,12 @@ const Login = () => {
     formState: { errors },
   } = useForm<TLoginForm>();
   const navigate = useNavigate();
+  const auth = useAppSelector((state) => state.auth);
+  if (auth?.accessToken) {
+    navigate("/");
+  }
   const dispatch = useAppDispatch();
-  const [login, { error, isLoading }] = useLoginMutation();
-  console.log("error:", error);
-  console.log("isLoading ", isLoading);
+  const [login, { isLoading }] = useLoginMutation();
 
   const onSubmit = async (data: TLoginForm) => {
     const toastId = toast.loading("Loggin in");
@@ -40,7 +42,7 @@ const Login = () => {
       navigate("/");
       toast.success("Logged in", { id: toastId, duration: 2000 });
     } catch (err) {
-      toast.error("Something went wrong", { id: toastId, duration: 2000 });
+      toast.error("Invalid Credentials", { id: toastId, duration: 6000 });
       console.log(err);
     }
   };
@@ -72,8 +74,14 @@ const Login = () => {
           placeholder="e.g. Leonard"
           id="email"
           label="Email"
+          error={!!errors?.email}
+          errorMessage={errors.email?.message}
           {...register("email", {
             required: "Email is required",
+            maxLength: {
+              value: 254,
+              message: "Email must be less than 255 characters",
+            },
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
               message: "Please enter a valid email address",
@@ -88,7 +96,7 @@ const Login = () => {
           password={true}
         />
         <Button variant="blue" className="w-full mb-6">
-          Login
+          {isLoading ? "Logging in..." : "Login"}
         </Button>
       </form>
       <div className="flex justify-center items-center gap-x-1">

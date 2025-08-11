@@ -133,7 +133,7 @@ const UploadResume = () => {
               Choose a file or drag & drop here
             </p>
             <p className="text-xs font-normal leading-[1.6] text-neutral-700 font-tiktok mb-6">
-              PDF, DOC, PNG, JPEG formats. Upto 10 MB
+              PDF format
             </p>
             <label
               className="text-navyBlue text-sm font-semibold px-4 py-2 border-2 rounded-[50px] border-navyBlue cursor-pointer"
@@ -149,7 +149,7 @@ const UploadResume = () => {
         type="file"
         id="fileInput"
         className="hidden"
-        accept=".pdf,.doc,.png,.jpg,.jpeg"
+        accept=".pdf"
         {...register("file", {
           onChange: (e) => {
             if (e.target.files && e.target.files.length > 0) {

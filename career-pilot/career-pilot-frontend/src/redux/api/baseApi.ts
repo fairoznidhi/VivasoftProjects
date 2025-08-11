@@ -25,7 +25,7 @@ const baseQueryWithRefreshToken: BaseQueryFn = async (
 ) => {
   let result = await baseQuery(args, api, extraOptions);
 
-  if (result.error?.status === 401) {
+  if (result.error?.status === 401 && !String(result.meta?.request.url).includes("/login")) {
     console.log("sending refresh token");
     const state = api.getState() as RootState;
     const refreshToken = state.auth.refreshToken;

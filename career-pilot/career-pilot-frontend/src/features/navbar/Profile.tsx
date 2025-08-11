@@ -19,12 +19,12 @@ const Profile = () => {
 
   return (
     <div className="flex items-center gap-4">
-      <img src="images/BellSimpleRinging.svg" />
+      {/* <img src="images/BellSimpleRinging.svg" /> */}
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div className="flex items-center gap-2 cursor-pointer group">
-            <img src="images/maleAvatar.svg" />
+            <img src="images/icons/profile2.svg" className="w-7 h-7"/>
             <h1 className="font-semibold text-sm leading-[1.6] font-tiktok text-navyBlue">
               {username}
             </h1>
@@ -35,14 +35,11 @@ const Profile = () => {
           </div>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent align="end" className="w-40">
-          <DropdownMenuItem onClick={() => navigate("/profile")}>
+        <DropdownMenuContent align="end" className="w-40 z-[2]">
+          {/* <DropdownMenuItem onClick={() => navigate("/profile")}>
             Profile
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => navigate("/settings")}>
-            Settings
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+          </DropdownMenuItem> */}
+          <DropdownMenuItem onClick={handleLogout} className="flex justify-between">Logout<img src="images/icons/logout.svg"/></DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

@@ -1,6 +1,6 @@
 import App from "@/App";
 import AuthLayout from "@/components/layout/AuthLayout";
-import HomeLayout from "@/components/layout/HomeLayout";
+import HomeLayout from "@/components/layout/HomeSublayout";
 import NavbarLayout from "@/components/layout/NavbarLayout";
 import { startActions } from "@/constants/paths";
 import AiInterview from "@/pages/AiInterview";

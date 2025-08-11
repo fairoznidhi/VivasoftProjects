@@ -21,6 +21,16 @@ export default {
         customBackgroundColor: "#F8FAFC",
         cornflowerBlue: "#335cff",
         whiteGlow: "rgba(255, 255, 255, 0.4)",
+        green: {
+          50: "#E9F9F0",
+          600: '#199A56'
+        },
+        neutral: {
+          50: "#F1F1F3"
+        },
+        gray: {
+          600: '#081539'
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

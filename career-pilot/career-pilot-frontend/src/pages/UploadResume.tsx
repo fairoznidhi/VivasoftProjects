@@ -1,7 +1,7 @@
 import GradientButton from "@/components/button/GradientButton";
 import { Progress } from "@/components/ui/progress";
 import { useFlow } from "@/context/FlowContext";
-import { useResumeUploadMutation } from "@/redux/api/home/resumeApi";
+import { useResumeUploadMutation } from "@/redux/api/resumeApi";
 import type { FormValues, UploadedFile } from "@/types/uploadResume";
 import { formatSize } from "@/utils/formatSize";
 import { useEffect, useRef, useState } from "react";
